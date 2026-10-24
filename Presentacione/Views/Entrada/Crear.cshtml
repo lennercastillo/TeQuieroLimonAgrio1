@@ -1,0 +1,38 @@
+@model Datos.DTOs.EntradaMercanciaDTOS
+@{
+    ViewData["Title"] = "Registrar Entrada";
+}
+
+<h2>Registrar Entrada de Mercancía</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Crear" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="ProductoId" class="form-label">Seleccionar Producto</label>
+                <select asp-for="ProductoId" asp-items="ViewBag.Productos" class="form-select"></select>
+                <span asp-validation-for="ProductoId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Cantidad" class="form-label">Cantidad a Ingresar</label>
+                <input asp-for="Cantidad" type="number" min="1" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Proveedor" class="form-label">Proveedor</label>
+                <input asp-for="Proveedor" class="form-control" placeholder="Ej: Distribuidora Central" />
+                <span asp-validation-for="Proveedor" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Guardar Entrada</button>
+                <a asp-action="Index" class="btn btn-secondary">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>

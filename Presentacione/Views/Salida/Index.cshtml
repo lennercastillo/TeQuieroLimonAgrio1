@@ -1,0 +1,48 @@
+@model IEnumerable<Datos.DTOs.SalidaMercanciaDTOS>
+@{
+    ViewData["Title"] = "Salidas";
+}
+
+<h2>Salidas de Mercancía</h2>
+<p>Registro de salidas y disminución de existencias.</p>
+
+<div class="mb-3 text-end">
+    <a asp-action="Crear" class="btn btn-danger">Registrar Salida</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Motivo</th>
+            <th>Destino</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FechaSalida.ToShortDateString()</td>
+                    <td>@item.CodigoProducto</td>
+                    <td>@item.NombreProducto</td>
+                    <td>@item.Cantidad</td>
+                    <td>@item.Motivo</td>
+                    <td>@item.Destino</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">No hay salidas registradas.</td>
+            </tr>
+        }
+    </tbody>
+</table>

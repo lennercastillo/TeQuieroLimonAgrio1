@@ -1,0 +1,66 @@
+@model Datos.DTOs.ResumenInventarioDTOS
+@{
+    ViewData["Title"] = "Inicio";
+    var productos = ViewBag.UltimosProductos as List<Datos.DTOs.ProductoDTOS> ?? new List<Datos.DTOs.ProductoDTOS>();
+}
+
+<div class="p-4 mb-4 bg-light border rounded">
+    <h2>Bienvenido al Sistema de Inventario</h2>
+    <p class="lead">Prototipo para el control de productos, existencias, entradas y salidas de mercancía.</p>
+    <hr />
+    <div class="d-flex gap-2">
+        <a asp-controller="Producto" asp-action="Index" class="btn btn-primary">Ver Productos</a>
+        <a asp-controller="Entrada" asp-action="Crear" class="btn btn-success">Registrar Entrada</a>
+        <a asp-controller="Salida" asp-action="Crear" class="btn btn-danger">Registrar Salida</a>
+    </div>
+</div>
+
+<div class="row text-center mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white p-3">
+            <h4>Total Productos</h4>
+            <h2>@Model.TotalProductos</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3">
+            <h4>Stock Total</h4>
+            <h2>@Model.TotalExistencias</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white p-3">
+            <h4>Entradas</h4>
+            <h2>@Model.TotalEntradas</h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark p-3">
+            <h4>Salidas</h4>
+            <h2>@Model.TotalSalidas</h2>
+        </div>
+    </div>
+</div>
+
+<h3>Resumen de Productos</h3>
+<table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in productos)
+        {
+            <tr>
+                <td>@item.Codigo</td>
+                <td>@item.Nombre</td>
+                <td>@item.Precio</td>
+                <td>@item.Stock</td>
+            </tr>
+        }
+    </tbody>
+</table>
