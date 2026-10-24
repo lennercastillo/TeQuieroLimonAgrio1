@@ -4,47 +4,22 @@
     var productos = ViewBag.UltimosProductos as List<Datos.DTOs.ProductoDTOS> ?? new List<Datos.DTOs.ProductoDTOS>();
 }
 
-<div class="p-4 mb-4 bg-light border rounded">
-    <h2>Bienvenido al Sistema de Inventario</h2>
-    <p class="lead">Prototipo para el control de productos, existencias, entradas y salidas de mercancía.</p>
-    <hr />
-    <div class="d-flex gap-2">
-        <a asp-controller="Producto" asp-action="Index" class="btn btn-primary">Ver Productos</a>
-        <a asp-controller="Entrada" asp-action="Crear" class="btn btn-success">Registrar Entrada</a>
-        <a asp-controller="Salida" asp-action="Crear" class="btn btn-danger">Registrar Salida</a>
-    </div>
+<h3>Inicio</h3>
+<p>Bienvenido al prototipo de sistema de inventario.</p>
+
+<div class="mb-4">
+    <p><strong>Resumen de Existencias:</strong></p>
+    <ul>
+        <li>Total de productos registrados: @Model.TotalProductos</li>
+        <li>Total de existencias en almacén: @Model.TotalExistencias</li>
+        <li>Total de entradas registradas: @Model.TotalEntradas</li>
+        <li>Total de salidas registradas: @Model.TotalSalidas</li>
+    </ul>
 </div>
 
-<div class="row text-center mb-4">
-    <div class="col-md-3">
-        <div class="card bg-primary text-white p-3">
-            <h4>Total Productos</h4>
-            <h2>@Model.TotalProductos</h2>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card bg-success text-white p-3">
-            <h4>Stock Total</h4>
-            <h2>@Model.TotalExistencias</h2>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card bg-info text-white p-3">
-            <h4>Entradas</h4>
-            <h2>@Model.TotalEntradas</h2>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card bg-warning text-dark p-3">
-            <h4>Salidas</h4>
-            <h2>@Model.TotalSalidas</h2>
-        </div>
-    </div>
-</div>
-
-<h3>Resumen de Productos</h3>
-<table class="table table-bordered table-striped mt-3">
-    <thead class="table-dark">
+<h4>Resumen de Productos</h4>
+<table class="table table-bordered">
+    <thead>
         <tr>
             <th>Código</th>
             <th>Producto</th>

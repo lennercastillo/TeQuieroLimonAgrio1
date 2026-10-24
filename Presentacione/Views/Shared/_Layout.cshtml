@@ -7,52 +7,32 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">SISTEMA DE INVENTARIO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">[Inicio]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Producto" asp-action="Index">[Productos]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Entrada" asp-action="Index">[Entradas]</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Salida" asp-action="Index">[Salidas]</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <div class="container mt-3">
+        <h2>SISTEMA DE INVENTARIO</h2>
+        <div class="mb-2">
+            <a asp-controller="Home" asp-action="Index">[Inicio]</a>
+            <a asp-controller="Producto" asp-action="Index">[Productos]</a>
+            <a asp-controller="Entrada" asp-action="Index">[Entradas]</a>
+            <a asp-controller="Salida" asp-action="Index">[Salidas]</a>
+        </div>
+        <hr />
 
-    <div class="container mt-4 mb-4">
         @if (TempData["Mensaje"] != null)
         {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-info">
                 @TempData["Mensaje"]
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         }
-        @RenderBody()
-    </div>
 
-    <footer class="border-top footer text-muted mt-5 py-3 text-center">
-        <div class="container">
-            &copy; 2026 - Sistema de Inventarios - Examen1
-        </div>
-    </footer>
+        @RenderBody()
+
+        <hr />
+        <footer class="text-muted small">
+            <p>Sistema de Inventarios - Examen 1</p>
+        </footer>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
